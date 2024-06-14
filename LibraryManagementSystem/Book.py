@@ -11,7 +11,7 @@ class Book(ABC):
     
     #create a helper function to return the getdetails
     def get_details(self):
-        return f"{}"
+        pass
     
     
         
