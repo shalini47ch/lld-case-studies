@@ -2,7 +2,7 @@
 from abc import ABC,abstractmethod
 
 class Button(ABC):
-    def __init__(self,status):
+    def __init__(self,status=False):
         self.status=status
     
     def press_down(self):
@@ -20,8 +20,8 @@ class Button(ABC):
     
 #here there are two types of classes that will implement the button one is the hallbutton and the other is the elevator 
 class HallButton(Button):
-    def __init__(self,button_sign):
-        super().__init__()
+    def __init__(self,button_sign,status=False):
+        super().__init__(status)
         #button sign indicates the sign of the button in hall
         self.button_sign=button_sign
     
@@ -33,9 +33,9 @@ class HallButton(Button):
 
 #similarly do it for elevatorButton
 class ElevatorButton(Button):
-    def __init__(self,destination_floor):
+    def __init__(self,destination_floor,status=False):
         #inherit from the abstract class
-        super().__init__
+        super().__init__(status)
         self.destination_floor=destination_floor
     
     def is_pressed(self):
