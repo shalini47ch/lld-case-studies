@@ -4,5 +4,3 @@ class Recommendation:
         self.createdOn=createdOn
         self.description=description
         self.isAccepted=isAccepted
-
-        
