@@ -15,7 +15,7 @@ class Person(ABC):
 #Server,receiptionist,housekeeper and guest
 #so here the server is inheriting from the Person
 class Server(Person):
-    def __init__(self):
+    def __init__(self,name,address,email,phoneNumber,accountType):
         super().__init__(name,address,email,phoneNumber,accountType)
     
     def addRoomCharge(self):
@@ -23,7 +23,7 @@ class Server(Person):
 
 #now next we will create for the receiptionist that will have the functionality of create booking 
 class Receiptionist(Person):
-    def __init__(self):
+    def __init__(self,name,address,email,phoneNumber,accountType):
         super().__init__(name,address,email,phoneNumber,accountType)
     
     def createBooking(self):
@@ -31,7 +31,7 @@ class Receiptionist(Person):
 #here creating another one inheriting that is the houseKeeping and the functionality assignToRoom
 
 class HouseKeeping(Person):
-    def __init__(self):
+    def __init__(self,name,address,email,phoneNumber,accountType):
         super().__init__(name,address,email,phoneNumber,accountType)
     
     def assignToRoom(self):
@@ -39,7 +39,7 @@ class HouseKeeping(Person):
         pass
 
 class Guest(Person):
-    def __init__(self,totalRoomsCheckedIn):
+    def __init__(self,name,address,email,phoneNumber,accountType,totalRoomsCheckedIn):
         super().__init__(name,address,email,phoneNumber,accountType)
         self.totalRoomsCheckedIn=totalRoomsCheckedIn
 
