@@ -7,11 +7,17 @@ class Person(ABC):
         self.email=email
         self.phonenumber=phonenumber
     
+    def __str__(self):
+        return f"{self.__class__.__name__} {self.name} (email: {self.email}, phone: {self.phonenumber})"
+    
 #now we will have two classes that will inherit one will be the Customer and the other will be employee
 class Customer(Person):
     def __init__(self,name,email,phonenumber,lastVisitedDate):
         super().__init__(name,email,phonenumber)
         self.lastVisitedDate=lastVisitedDate
+    
+    def __str__(self):
+        return f"{super().__str__()}, last visited: {self.lastVisitedDate}"
 
 #similarly an employee will inherit both from Person and will also be an abstractclass
 
@@ -20,6 +26,9 @@ class Employee(Person,ABC):
         super().__init__(name,email,phonenumber)
         self.employeeId=employeeId
         self.joiningDate=joiningDate
+    
+    def __str__(self):
+        return f"{super().__str__()}, employee ID: {self.employeeId}, joined: {self.joiningDate}"
 
 #here we will create separate classes called as Chef,Waiter,Receptionist,Manager
 class Chef(Employee):
