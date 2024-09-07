@@ -1,7 +1,7 @@
 #here we will create a locker class that will represent individual lockers
 #lockerid,lockersize,isAssigned,pin,observers
 #here we will also use the observer design pattern that will send the notification with the lockerid and the pin 
-
+from AmazonLocker import AmazonLockerSystem
 class Locker:
     def __init__(self,lockerid,lockersize):
         self.lockerid=lockerid
@@ -16,6 +16,8 @@ class Locker:
         self.isAssigned=True
         self.pin=pin
         self.notify_observers()
+    
+    
     
     def free(self):
         self.isAssigned=False
@@ -46,6 +48,10 @@ class Customer:
         self.assigned_locker=None #this will store whether the locker is assigned or not
         self.pin=None #this variable will help to set the pin
     
+    def order_package(self, package, amazon_locker_system):
+        amazon_locker_system.assign_locker(self, package)
+    
+    
     def update(self,lockerid,pin):
         self.assigned_locker=lockerid
         self.pin=pin
@@ -61,6 +67,12 @@ class Customer:
             return True
         else:
             print(f"Customer with {self.customerid} :Invalid pin")
+    
+    def assignlocker(self,pin):
+        self.pin=pin
+        print(f"Customer with {self.customerid}: has a pin {pin}")
+    
+    
     
         
     

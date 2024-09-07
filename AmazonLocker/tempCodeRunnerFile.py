@@ -1,0 +1,1 @@
+ # customer1.unassign_locker(123456)
