@@ -30,6 +30,22 @@ class BlackJackPlayer(Player):
     #create a helper function to place bet
     def placebet(self):
         pass
+    
+    def reset_password(self):
+        pass
+
+class Dealer(Player):
+    def __init__(self,id,password,balance,status,person,hands):
+        super().__init__(id,password,balance,status,person,hands)
+    
+    def get_total_score(self):
+        pass
+    
+    def reset_password(self):
+        pass
+        
+    
+
         
     
 

@@ -26,3 +26,5 @@ class Person:
     
     def getState(self):
         return self.state
+
+#This game has a lot of states that can be handled by the state design pattern and even iterator can be used for next
