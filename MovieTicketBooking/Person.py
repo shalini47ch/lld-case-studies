@@ -43,7 +43,7 @@ class Customer(Person):
     #now create three more methods to createbooking,updated booking and delete booking 
     def create_booking(self,booking):
         self.bookings.append(booking)
-        print(f"Booking for {booking.bookingid} created for movie{booking.moviename}")
+        print(f"Booking for {booking.bookingid}  booking id created for movie {booking.moviename}")
     
     def update_booking(self,booking,moviename):
         booking.moviename=moviename
@@ -65,13 +65,60 @@ class Admin(Person):
     #create helpers for addshow,deleteshow followed by add movie and delete movie
     def add_show(self,show):
         self.shows.append(show)
-        print(f"Show has a showid {self.showid} and has a showtime of {self.showtime}")
+        print(f"Show has a showid {show.showid} and has a showtime of {show.startime}")
     
     def delete_show(self,show):
         self.shows.remove(show)
-        print(f"Show with {self.showid} has been deleted successfully")
+        print(f"Show with {show.showid} has been deleted successfully")
     
-#to be completed and factory design pattern needs to be added
+    #similarly here create helpersfor add movie and delete movie
+    
+    def add_movie(self,movie):
+        self.movies.append(movie)
+        print(f"Movie with {movie.moviename} added")
+    
+    def delete_movie(self,movie):
+        self.movies.remove(movie)
+        print(f"Movie with {movie.moviename} removed")
+
+#similarly do it for ticketAgent
+class TicketAgent(Person):
+    def __init__(self,name,address,email,phonenumber):
+        self.lists=[]
+        super().__init__(name,address,email,phonenumber)
+    
+    def create_booking(self,booking):
+        self.lists.append(booking)
+        print("Booking by ticketAgent done successfully")
+
+#now here create a personfactory
+class PersonFactory:
+    @staticmethod
+    def create_factory(persontype,name,address,email,phonenumber):
+        if persontype=="Customer":
+            return Customer(name,address,email,phonenumber)
+        elif persontype=="Admin":
+            return Admin(name,address,email,phonenumber)
+        elif persontype=="TicketAgent":
+            return TicketAgent(name,address,email,phonenumber)
+        else:
+            raise ValueError("Unknown person type")
+if __name__ == "__main__":
+    customer=PersonFactory.create_factory("Customer","Alice","Main Street","alice@gmail.com",8934567890)
+    booking=Booking(12,"Instellar","7PM")
+    customer.create_booking(booking)
+    
+    #here we will create a booking for admin and add movie and show
+    admin=PersonFactory.create_factory("Admin","Hanna","Street2","hanna@gmail.com",7896543210)
+    movie=Movie(14,"Conjuring")
+    show=Show(15,"Conjuring","9PM")
+    admin.add_movie(movie)
+    admin.add_show(show)
+    
+    
+    
+
+
     
     
         
